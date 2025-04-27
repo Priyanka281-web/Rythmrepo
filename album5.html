@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="logo3.png">
+    <title>Rythmix Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="musicplayer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body{
+    font-family: "Montserrat", sans-serif;
+    margin:0.5rem;
+    background-color:black;
+    color:white;
+    overflow:hidden;
+}
+.main{
+    display:flex;
+    height:100vh;
+    padding:0.5rem;
+}
+.sidebar{
+    background-color:black;
+    background-image:linear-gradient(Cyan,black,pink);
+    width:323px;
+    border-radius:1rem;
+    margin-right:0.5rem;
+}
+.main-content{
+    background-color:#121212;
+    flex: 1;
+    border-radius:1rem;
+    overflow: scroll;
+    padding:0 1.5rem 0 1.5rem;
+    height: 100%;
+    
+}
+.music-player{
+    background-color:black;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:72px;
+}
+a{
+    text-decoration:none;
+    color:white;
+}
+.nav{
+    background-color:#121212;
+    border-radius:1rem;
+    display:flex;
+    justify-content: center;
+    top:0;
+}
+.nav-options .login{
+    -ms-flex-align: end;
+}
+.logo{
+    height:2.5rem;
+    width:2.5rem;
+    border-radius: 50%;
+    margin-top: 0.25rem;
+    margin-right:25rem;
+}
+.nav-options i{
+    font-size:1.25rem;
+}
+.nav-options a{
+    font-size:1rem;
+}
+.nav-options{
+    opacity: 0.7;
+}
+.nav-options:hover{
+    opacity: 1;
+}
+.library{
+    background-color:#121212;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius:1rem;
+    height:100%;
+    width:300px;
+    padding:0.5rem 0.75rem;
+}
+.library a{
+    color:black;
+}
+.library p{
+    color:white;
+}
+.library i{
+    cursor: pointer;
+}
+.icon-container{
+    background-color: #3a3a3a;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:3rem;
+    height:3rem;
+    margin-right:0.5rem;
+    
+}
+.searchoption{
+    position:absolute;
+    top:1.7rem;
+    left:34.5rem;
+    z-index: 2;
+}
+.search{
+    border-radius:2rem;
+    padding-top:0.85rem;
+    padding-bottom:0.85rem;
+    padding-left:3rem;
+    padding-right:4rem; 
+    margin-left:0.25rem;
+    margin-right:3rem;
+    margin-top:0rem;
+    width:400px;
+    background-color: #3a3a3a;
+}
+input[type="search"]{
+    color:white;
+}
+input::placeholder{
+    color:#f0efef;
+    font-family: inherit;
+}
+.sign-in{
+    display:flex;
+    align-items:center;
+    margin-top:1rem;
+    margin-left:10rem;
+}
+.login{
+    display:flex;
+    align-items: center;
+    opacity: 1;
+    margin-left:2.5rem;
+    background-color:white;
+    border-radius: 3rem;
+    width:5.25rem; 
+    padding:0.5rem 0.25rem 1rem 0.35rem;
+}
+.login a{
+    color:black;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:0.5rem;
+}
+.options{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.library-option i{
+    font-size:1.25rem;
+}
+.icons{
+    font-size:1.25rem;
+    display:flex;
+}
+.icons i{
+    opacity: 0.7;
+    margin-right: 1rem;
+}
+.icons i:hover{
+    opacity: 1;
+}
+.boxes{
+    background-color: #232323;
+    height:8rem;
+    border-radius:0.75rem;
+    margin:0.75rem 0 1.75rem 0;
+    padding:0.75rem 1rem;
+}
+.box1{
+    font-size:1rem;
+    font-weight: 500;
+}
+.box2{
+    font-size:0.85rem;
+    opacity:0.9;
+}
+.badge{
+    background-color:white;
+    border:none;
+    border-radius:100px;
+    padding:0.2rem 1rem;
+    font-weight: 700;
+    margin-top:0.5rem;
+    height:2rem;
+    width:fit-content;
+}
+.glor{
+    background-color:#121212;
+    overflow: scroll;
+}
+.glorypic{
+    height: 300px;
+    width:980px;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius: 1rem;
+    display:block;
+}
+.glorypic .ima{
+    padding:20px;
+    border-radius: 10%;
+}
+.glorypic .write{
+    display:inline-block;
+    position: relative;
+    top: -10rem;
+}
+.text2nd{
+    display: inline-block;
+    font-size: 70px;
+}
+b{
+    position: relative;
+    top: -5rem;
+    left:-4rem;
+}
+.about{
+    display:inline-block;
+    position:relative;
+   
+}
+.about img{
+    height:25px;
+    width: 25px;
+    border-radius: 50%; 
+    position:relative;
+    left:-20rem;  
+    top:-2rem;
+}
+.artist a{
+    position: relative;
+    left:11rem;
+    top:-3rem;
+}
+.artist{
+    display: inline-block;
+    position:relative;
+    left:-20rem;
+    width:200px;
+    padding-left:10px;
+    top: -2.5rem;
+    font-size: smaller;
+}
+.info{
+    display:inline-block;
+    position:absolute;
+    display:inline-block;
+    width:200px;
+    padding-left:10px;
+    opacity:0.65;
+    left:20rem;
+    top:-2.2rem;
+}
+.play{
+    display:block;
+}
+.play i{
+    background-color: #1ed760;
+    height: 50px;
+    width:50px;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    margin:20px;
+    color:black;
+    font-size:20px;
+}
+.play i:hover{
+    height:52px;
+    width:52px;
+    font-size:22px;
+}
+.collective{
+    display:inline-block;
+    position:relative;
+}
+.plus{
+    position:absolute;
+    left: 110px;
+    top: 32px;
+}
+.plus i{
+    height:25px;
+    width:25px;
+    border:white solid;
+    opacity: 0.7;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:50%;
+}
+.plus i:hover{
+    opacity: 1;
+}
+.three-dots{
+    position:absolute;
+    left:190px;
+    top:38px;
+}
+.three-dots i{
+   display:flex;
+   opacity:0.7;
+}
+.three-dots i:hover{
+    opacity:1;
+}
+.hdng{
+    opacity:0.7;
+    font-size: 13px;
+}
+.titl{
+    display:inline-block;
+    padding-left:30px;
+}
+.art{
+    display:inline-block;
+    padding-left:445px;
+    
+}
+.time{
+    display:inline-block;
+    padding-left:350px;
+}
+.lining{
+    width: 100%;
+    border-top: 1px solid white;
+    opacity: 0.1;
+    margin-bottom:10px;
+}
+.song1st{
+    margin-bottom:15px;
+    font-weight: 500;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.name{
+    display:inline-block; 
+    width:470px;
+}
+.artst{
+    display:inline-block;
+    width:390px;
+    opacity:0.7;
+}
+.Time{
+    display:inline-block;
+    opacity:0.7;
+}
+.count{
+    display:inline-block;
+    padding-left:15px;
+    width:20px;
+    opacity:0.7;
+}
+.song1st:hover{
+    background-color: #343434;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <img src="logo3.png" class="logo">
+        <div class="nav-options" style="opacity: 1;">
+            <div class="icon-container"><a href="file:///C:/Users/Welcome/Desktop/hello/musicplayer.html"> <i class="fa-solid fa-house" id="houseicon"></i></a></div>
+        </div>   
+        <div class="nav-options">
+            <div class="searchoption">
+            <i class="fa-solid fa-magnifying-glass"></i> </div>
+            <form><input class="search" type="search" placeholder="Search songs" >
+            </form>
+        </div>
+        <div class="nav-options">
+            <div class="sign-in">
+            
+            <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Sign in</a>
+            </div>
+        </div>
+        <div class="nav-options">
+            <div class="login" style="opacity: 1;">
+            
+            <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Log in</a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="sidebar">
+            <div class="library">
+                <div class="options">
+                    <div class="library-option nav-options">
+                        <i class="fa-solid fa-book-open"></i>
+                        <a href="#">Your Library</a>
+                    </div>
+                    <div class="icons">
+                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+                    <div class="library-boxes">
+                        <div class="boxes">
+                            <p class="box1">Create your first playlist</p>
+                            <p class="box2">Let's create it together I will guide you</p>
+                            <button class="badge">Create playlist</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="glor">
+        <div class="glorypic">
+            <img class="ima"src="data:image/jpeg;base64,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">
+            <div class="write">Album</div>
+            <div class="text2nd"><b>MOOSETAPE</b></div>
+            <div class="about"><img src="yo.png" style="opacity:0;">
+                <div class="artist">
+                    <a href="#">Sidhu Moose Wala</a>
+                <div class="info">2021 &nbsp; 22songs, 1hr 37min</div>
+                </div>
+            </div>
+        </div>
+        <div class="collective">
+            <div class="play">
+                <a href="#"><i class="fa-solid fa-play"></i></a>
+            </div>
+            <div class="plus">
+                <a href="#"><i class="fa-solid fa-plus"></i></a>
+            </div>
+            <div class="three-dots">
+                <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+            </div>
+        </div>
+        <div class="hdng">
+            <div class="titl"># Title</div>
+            <div class="art">Artist</div>
+            <div class="time">	&#128338;</div>
+        </div>
+        <div class="lining"></div>
+        <div class="song1st"><a href="#">
+            <div class="count">1</div>
+            <div class="name">Moosetape(Intro)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">1:32</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">2</div><a href="#">
+            <div class="name">Bitch I'm Back</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">3:50</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">3</div><a href="#">
+            <div class="name">Burberry</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">3:23</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">4</div><a href="#">
+            <div class="name">Racks and Rounds(feat.Sikander Kahlon)</div>
+            <div class="artst">Sidhu Moose Wala,Sikander Kahlon</div>
+            <div class="Time">3:45</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">5</div><a href="#">
+            <div class="name">US(feat.Raja Kumari)</div>
+            <div class="artst">Sidhu Moose Wala,Raja Kumari</div>
+            <div class="Time">3:50</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">6</div><a href="#">
+            <div class="name">Moosedrilla(feat.DIVINE)</div>
+            <div class="artst">Sidhu Moose Wala,DIVINE</div>
+            <div class="Time">3:52</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">7</div><a href="#">
+            <div class="name">Boo Call(Skit)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">0:43</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">8</div><a href="#">
+            <div class="name">Brown Shortie(feat.Sonam Bajwa)</div>
+            <div class="artst">Sidhu Moose Wala,Sonam Bajwa</div>
+            <div class="Time">3:28</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">9</div><a href="#">
+            <div class="name">Aroma</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">4:16</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">10</div><a href="#">
+            <div class="name">Real One(Skit)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">0:44</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">11</div><a href="#">
+            <div class="name">GOAT</div>
+            <div class="artst">Sidhu Moose Wala,Wazir Patar</div>
+            <div class="Time">3:34</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">12</div><a href="#">
+            <div class="name">Sidhu Son</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">3:37</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">13</div><a href="#">
+            <div class="name">Chach Huu(Skit)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">0:46</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">14</div><a href="#">
+            <div class="name">Me and My Girlfriend</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">3:23</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">15</div><a href="#">
+            <div class="name">These Days(feat.Bohemia)</div>
+            <div class="artst">Sidhu Moose Wala,Bohemia</div>
+            <div class="Time">3:29</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">16</div><a href="#">
+            <div class="name">Ultimatum(Intro)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">1:30</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">17</div><a href="#">
+            <div class="name">Signed to God</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">2:27</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">18</div><a href="#">
+            <div class="name">Regret</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">5:11</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">19</div><a href="#">
+            <div class="name">Pind Hood Damn Good(RMG Intro)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">1:15</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">20</div><a href="#">
+            <div class="name">Malwa Black</div>
+            <div class="artst">Sidhu Moose Wala,Wazir Patar</div>
+            <div class="Time">3:59</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">21</div><a href="#">
+            <div class="name">B & W</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">4:05</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">22</div><a href="#">
+            <div class="name">Celebrity Killer(feat.Tion Wayne)</div>
+            <div class="artst">Sidhu Moose Wala,Tion Wayne</div>
+            <div class="Time">3:23</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">23</div><a href="#">
+            <div class="name">Invincible(feat.Stefflon Don)</div>
+            <div class="artst">Sidhu Moose Wala,Stefflon Don</div>
+            <div class="Time">4:04</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">24</div><a href="#">
+            <div class="name">Amli Talk(Skit)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">0:44</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">25</div><a href="#">
+            <div class="name">G-Shit(feat.Blockboi Twitch)</div>
+            <div class="artst">Sidhu Moose Wala,Blockboi Twitch</div>
+            <div class="Time">3:53</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">26</div><a href="#">
+            <div class="name">Built Different</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">4:07</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">27</div><a href="#">
+            <div class="name">Trial Day(Skit)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">1:59</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">28</div><a href="#">
+            <div class="name">Calaboose</div>
+            <div class="artst">Sidhu Moose Wala,Bohemia</div>
+            <div class="Time">4:05</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">29</div><a href="#">
+            <div class="name">Facts(Skit)</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">1:11</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">30</div><a href="#">
+            <div class="name">295</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">4:30</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">31</div><a href="#">
+            <div class="name">IDGAF(feat.Morrisson)</div>
+            <div class="artst">Sidhu Moose Wala,Morrisson</div>
+            <div class="Time">2:56</div></a>
+        </div>
+        <div class="song1st">
+            <div class="count">32</div><a href="#">
+            <div class="name">Power</div>
+            <div class="artst">Sidhu Moose Wala</div>
+            <div class="Time">3:48</div></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
