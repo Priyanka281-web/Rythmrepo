@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+      body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000; /* Black theme */
+  color: #fff;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: linear-gradient(145deg, #111, #222); /* Subtle gradient */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+h1 {
+  color: #00FFFF; /* Cyan */
+  margin-bottom: 10px;
+}
+
+p {
+  color: #FF69B4; /* Pink */
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+input, textarea {
+  width:96.5%;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #111;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 5px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 1px solid #00FFFF; /* Cyan */
+  box-shadow: 0 0 5px #00FFFF;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background: #FF69B4; /* Pink */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+  background: #FF1493; /* Darker Pink */
+}
+  </style>
+</head>
+<body>
+  <div class="contact-container">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you! Feel free to get in touch with us.</p>
+    <form class="contact-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="Write your message here" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Your message has been sent! Thank you for reaching out.');
+});
+  </script>
+</body>
+</html>
