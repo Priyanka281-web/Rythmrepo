@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Music Player</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #000, #111);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+}
+
+.header nav a {
+    color: cyan;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.header nav a:hover,
+.header nav a.active {
+    color: pink;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 1), #111);
+    color: cyan;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: pink;
+    animation: fade-in 1.5s ease-in-out;
+}
+
+.hero h1 span {
+    color: cyan;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    animation: slide-in 2s ease-in-out;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.about .content {
+    flex: 1;
+    max-width: 500px;
+    margin: 20px;
+    animation: slide-up 1.8s ease-in-out;
+}
+
+.about .image img {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(255, 0, 255, 0.3);
+    animation: zoom-in 2s ease-in-out;
+}
+
+/* Team Section */
+.team {
+    padding: 40px 20px;
+    text-align: center;
+    background: #111;
+}
+
+.team .section-title {
+    font-size: 2rem;
+    color: pink;
+    margin-bottom: 20px;
+    animation: fade-in 1.5s ease-in-out;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-member {
+    flex: 1 1 250px;
+    margin: 20px;
+    text-align: center;
+    animation: slide-up 1.8s ease-in-out;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid cyan;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
+}
+
+.team-member h3 {
+    margin: 10px 0 5px;
+    color: pink;
+}
+
+.team-member p {
+    color: cyan;
+}
+
+.team-member:hover img {
+    transform: scale(1.1);
+    border-color: pink;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #000;
+    color: cyan;
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoom-in {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <a href="file:///C:/Users/Welcome/Desktop/hello/musicplayer.html">Home</a>
+            <a href="file:///C:/Users/Welcome/Desktop/hello/CHECK.html" class="active">About Us</a>
+            <a href="file:///C:/Users/Welcome/Desktop/hello/checkcontact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to <span>Our Music Player</span></h1>
+            <p>Your ultimate destination for music, crafted with passion and precision.</p>
+        </section>
+        <section class="about">
+            <div class="content">
+                <h2 class="section-title">About Us</h2>
+                <p>At our Music Player, we strive to redefine how you experience music. With sleek designs, intuitive controls, and endless possibilities, our mission is to bring the magic of sound closer to you.</p>
+            </div>
+            <div class="image">
+                <img style="height:3rem;" src="musicwave3.jpg" alt="Music Illustration">
+            </div>
+        </section>
+        <section class="team">
+            <h2 class="section-title">Meet the Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="#" alt="Riya">
+                    <h3>Riya</h3>
+                    <p>Developer & Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="#" alt="Priyanka">
+                    <h3>Priyanka</h3>
+                    <p>Audio Specialist & Music Content Strategist</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Music Player. All rights reserved.</p>
+    </footer>
+</body>
+</html>
