@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="logo3.png">
+    <title>Rythmix Web Player: Music for everyone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+    body{
+    font-family: "Montserrat", sans-serif;
+    margin:0.5rem;
+    background-color:black;
+    color:white;
+    overflow:hidden;
+    }
+    .main{
+    display:flex;
+    height:100vh;
+    padding:0.5rem;
+    }
+    .sidebar{
+    background-color:black;
+    width:323px;
+    border-radius:1rem;
+    margin-right:0.5rem;
+    }
+    .main-content{
+    background-color:#121212;
+    background-image:linear-gradient(rgb(7, 211, 211) 10%,black,rgb(248, 140, 158) 40%, #121212, #121212);
+    flex: 1;
+    border-radius:15px;
+    overflow: scroll;
+    }
+    a{
+    text-decoration:none;
+    color:white;
+    }
+    .nav{
+    background-color:#121212;
+    border-radius:1rem;
+    display:flex;
+    justify-content: center;
+    top:0;
+    }
+    .nav-options .login{
+    -ms-flex-align: end;
+    }
+    .logo{
+    height:2.5rem;
+    width:2.5rem;
+    border-radius: 50%;
+    margin-top: 0.25rem;
+    margin-right:25rem;
+    }
+    .nav-options i{
+    font-size:1.25rem;
+    }
+    .nav-options a{
+    font-size:1rem;
+    }
+    .nav-options{
+    opacity: 0.7;
+    }
+    .nav-options:hover{
+    opacity: 1;
+    }
+    .library{
+    background-color:#121212;
+    color:black;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius:1rem;
+    height:100%;
+    width:300px;
+    padding:0.5rem 0.75rem;
+    }
+    .library a{
+    color:black;
+    }
+    .library p{
+    color:white;
+    }
+    .library i{
+    cursor: pointer;
+    }
+    .icon-container{
+    background-color: #3a3a3a;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:3rem;
+    height:3rem;
+    margin-right:0.5rem;
+    
+    }
+    .searchoption{ 
+    position:relative; 
+    margin-top:-0.4rem;
+    top:1.35rem; 
+    left:1.6rem; 
+    z-index: 2; 
+    }
+    .search{
+    border-radius:2rem;
+    padding-top:0.85rem;
+    padding-bottom:0.85rem;
+    padding-left:3rem;
+    padding-right:4rem; 
+    margin-left:0.25rem;
+    margin-top:-0.7rem;
+    margin-right:3rem;
+    width:400px;
+    background-color: #3a3a3a;
+    }
+    input[type="search"]{
+    color:white;
+    }
+    input::placeholder{
+    color:#f0efef;
+    font-family: inherit;
+    }
+    .sign-in{
+    display:flex;
+    align-items:center;
+    margin-top:1rem;
+    margin-left:10rem;
+    }
+    .login{
+    display:flex;
+    align-items: center;
+    opacity: 1;
+    margin-left:2.5rem;
+    background-color:white;
+    border-radius: 3rem;
+    width:5.25rem; 
+    padding:0.5rem 0.25rem 1rem 0.35rem;
+    }
+    .login a{
+    color:black;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:0.5rem;
+    }
+    .options{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    }
+    .library-option i{
+    font-size:1.25rem;
+    }
+    .icons{
+    font-size:1.25rem;
+    display:flex;
+    }
+    .icons i{
+    opacity: 0.7;
+    margin-right: 1rem;
+    }
+    .icons i:hover{
+    opacity: 1;
+    }
+    .boxes{
+    background-color: #232323;
+    height:8rem;
+    border-radius:0.75rem;
+    margin:0.75rem 0 1.75rem 0;
+    padding:0.75rem 1rem;
+    }
+    .box1{
+    font-size:1rem;
+    font-weight: 500;
+    }
+    .box2{
+    font-size:0.85rem;
+    opacity:0.9;
+    }
+    .badge{
+    background-color:white;
+    border:none;
+    border-radius:100px;
+    padding:0.2rem 1rem;
+    font-weight: 700;
+    margin-top:0.5rem;
+    height:2rem;
+    width:fit-content;
+    }
+    .dropdown{
+    position:relative;
+    display:inline-block;
+    font-family:Arial,sans-serif;
+    }
+    .dropbtn{
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    padding:1-px;
+    text-decoration:none;
+    }
+    .dropdown-content{
+    display:none;
+    background-color:#333;
+    min-width:200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    }
+    .dropdown-content a{
+    color:white;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+    }
+    .dropdown-content a:hover{
+    background-color: #575757;
+    }
+.dropdown:hover .dropdown-content{display: block;}
+.dropdown:hover .dropbtn{border-bottom: 2px solid white;}
+.album{
+    z-index:2;
+    align-items: center;
+    padding-right:1rem;
+    padding-top:0.75rem;
+    margin-top:18rem;
+    position:relative;
+    background-color: #121212;
+    border-radius: 15px;
+    margin-bottom:6rem;
+}
+.heading{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:1rem;
+    margin-bottom:-1rem;
+}
+.heading  a:hover{
+    text-decoration:underline;
+}
+.heading h2{
+    padding-left:1.5rem;
+}
+.card-title{
+    font-weight:500;
+    display:flex;
+}
+.cards{
+    display:flex;
+    flex-wrap: wrap;
+}
+.card{
+    height:18rem;
+    width:10rem;
+    background-image: linear-gradient(rgb(3, 226, 226),rgb(0, 0, 0),rgb(253, 151, 168));
+    border-radius:0.5rem;
+    padding:1rem;
+    margin:1rem;
+    transition: box-shadow 0.5s ease;
+}
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgb(71, 71, 71);
+}
+.card img{
+    height:9rem;
+    width:9rem;
+    border-radius:0.5rem;
+    margin-left:0.5rem;
+}
+.card-info{
+    opacity:0.9;
+    font-size:0.9rem;
+}
+.big-background-image{
+    background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIVFRUVEBUVFRUVFRUVFRUVFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGBAQGC0dHR0tLS0rLS0tLSstKystLTctLSstLS0tLS0tLS0tKy0tLS0tLS0tKys3LS0rLS0tLS0tN//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAAAQIDBQYEBwj/xAA3EAACAQMCAwQJAwQDAQEAAAAAAQIDBBEFIRIxQQZRYXETIjKBkaGxwfAH0eEUI0JiUpLxciT/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EACQRAQEAAgICAQQDAQAAAAAAAAABAhEDIRIxQRMiUVIEQnEy/9oADAMBAAIRAxEAPwDxtCjUKbYKAAQACgFAAKAgA2NbAXINjHITJUO4g4hg6nTlL2Yt+Sb+gU7IuQlbzXOEl5xaGJgSgNTHEWAAABAFEAQAAIAFAAAACkAUAhgogpUKgAAFFEDJFKNbBsY2VCuQ1sQstE0WrdT4aa2/ym/ZX7vwJbJ7WS3qK0v9I7I3NfEuH0cH/lLnjwjzPROzfYqjQxJx45/8pLOP/ldDUxskcM+f9Xpw4P2YXS+wtCnvNOrLvntH/qjU2ulwisKKXhFYLZW6QsUcLlb7r0TGT1FHeaXF9DN6h2fpP2qcX7sP4o3dwisuIZHlYupfbza87JR50pNf6y3RRXmk1aXtRyu9bo9ZqWie5WX1njodceW/Ljlw4/DywDX6losJ5aXDLvX3MxeWc6bxJeT6M745SvPlhcXOIKBpggAKAgCiAACiAAAADBQArJQAAFEbDIyTAGxoFn2d0ed3WjTjy5zl3R/cW6WTd1HX2V7OTu55eVSi/Wf/AC/1iew6PpEKUVCEVGKXJfnMfo+lQoxjCEcRisJF9a2/U8eedzr3YYTCGQpD1SydsaBLGgZ0u1f/AExFUo4LlUSGrSHiTJQ1oHLVty4uaGDjlEzY6SquVDY4bqhlF7OJxV4AZK4p42ZT39spJprKZpNSpLco5yy8M641zyjGX1k6b/1fy8Gchr7+gmmmZSvS4ZNfmD0Y5beTPHVRgAGmAAAAAAgAAAAgAgKyBGOGMBGxoMAA9f8A0z0b0duptevV9Z96j/ivh9TyewtnVqwpr/OcY+5vf5ZPorSLZQhGKWEkkcebLrT0cGPe3ZQpFpQgcuMHZSexwjvU6iSJCUyRG3MxohkTs55Eq4uS4icVSmWM0clWO5iusV1WmV10W9Yp71mW4pL+PMzVy/X2NHfyM7UWZ+86YMZIrqGxm9Vo9e4113HbJn9ThlPyOuFcOSM8AAdnnAAAAAAAgCgA1CiIUqQMZIexkgiMUQUDRdgLbjvaf+ilP5YX1PerfoeKfpdH/wDVJ91L6yX7HtFFnl5r9z2cM+13czqonLRWx1U0YbrqgyVEEJEyNRzoZFUJGyGtIER1DhqS3OyUm0ck4MzXWK+6kylvUaC4gUl8tjnXSM/exZUShh5Li+n3FRJnTFmua+qbFHePKLW/nsU9w9jri48ilrLEmMJrrn7iE7x5aAACgAAIEAAARCiAVkrGSHMbIgYAAyjYfpjPFzLxpr6nstvyPNOynZGtbcF1OaxOGHBJ5XFhx39x6NbVNkePlsuXT3cWNmOqt7ZHXFnFZS23LGlJfIki5HQJokORJVkupphJNkM3kiq3aOb+rWeZGpHbBkdxsQUbtN8zlvdRi3wp8gpt3VSRm76rlk2r65ShHeaT6LO7Zi73tXBy9rO/l9ROO1fORdXVLJXVYpI4anaeMlty7uv/AIRz1GNReq/NdUXwsSZyuO7nvgq67J61X1mc9Y6Ryyu1ZdLMl5ELRY2i/uZ7kct9NObaOsvw45TrbnAUQ0wBBRCKBAAIBQQBCMYx7GMoYKIwQHsf6c68rmzla1H/AHKaxFvrFbx9/Q1NPaJ43+n1dq5cF/nTfxjusHscE3FeSPHyzWT38V8sdq+v2q9HmFOlKUltlp8OfJb/AEKm81G7qeslJ47nh/DbC+Qa9WdBt8PPfODG3nae4m+GLxvhJLik88ljoi4d+ky69rfU+1WoU9/7qS2XXG3Vpb/wcFl+oN9CXrtTi3ndYfislZq13d0Zejr1ZU36LjjFRU85yoxbWEuXPoVNK8rTzJ74WW8fsdvHr04eXfVeoad2sdfOY8LXjs+uP4L3TbmU3lnlGm30k1tj8+Z6t2Zg5Qz4HDOaenC7iW9vXBPcyOr6xJRfDLGfiWHbO4lSyvDyPNL69lN7lwx2nJlpHfXM5vLk3uRQts7ykkiS0tKlWXDCLk8Z4Vzwur7kRzvGsKMUnj1swjs88k3lvbq/hsejt5braX0MOkge26bz3kVRNpOSW6zlLD+Q2MX5k0u3bRqt8yepyIrS0lzaJ6ywjLWnHTg8SwcFTm/M66VV5a8WcMXn4nTFzyKAAaZAgAQAC4ECBAAoCMa0PY1hKikIOkIUaH9PqqjqFDPKUnH/ALRZ7PQnjbuf0Z8+WdVwqQnF4cZxkn4po960apx8LfVJv38zzc87lev+PerGgutNhVhhxTyjH6l2ejTkp06axHmkvmj0K3S4UMuLLixvjD3WFiW2MM56dZlp5hr15aXEYwuqEpSg/VknwzWeaUlh9Fs8rZFXY6XTkvRW9CquL2m3vjO27XI9cnpUHziS0NPjHaMUvcb3U+33piNO7KU0nxQTfCukVwvHJcKWem5p+z+ncEcFvK3ilgW0hgnupcumA7e6dxpnnNjo6lUaltnZPu8fM9j7V0/VfkYm1oRfMb0vjtX6ZZxtXxU4VOLCzPiW/XeONzk1apbTm6kqCc3z2wm+9xjhZ+puba2yu/b5Ed1o0Jc4L5F8jwjy/Ubx1PVjBJdyWCTSdMk3lo3Uuz0c7RQ6pYxprCwLn0k4+91nbq34Ymcu5ml1mtzSMnWluawZ5HPCOOJ+ZXU5FnUXqvyZUHbF5s3UBFSn0JTSAAAgAEAIQVCAVDhGAEVHJDSSQwqLXsnawq3lCnP2ZVN/HCbS+R6/p1TE2u5teW54ro196C4pVsZ9HUUseHX5Hq+kX8av9yOcSbazz59Tzc8vT1/x7NWPQrG7yW9GomY+wr46mhtLrY5Y11yxWjwRyqYIZXKwVl9f8KbNWsTHbvq1lnBNb8yg0Oq63FU6J4X3NHQjhFxu1ymumc7VQ9X4nm93c+jlvt+fwen9ons+48q1um5NpD5b/q0/Zm/4jVbYPNOxVdxlKEuaeH9j0D03qmL1VncMu6qXQymsXRbandrcyWq3fT8/NxjFvSj1GvzKab3Oy8rZZxM9GMeXO9o6ksKT7l9SqR03VZ+z47nMdZHDK7EWdMHk5SWlIrKYBWhA0AEAiGigBUKIwAgRjZLYkihtUogPQewNy3BwfNPK8U9/3MAXnZa/9FVj54f58THJjvF04stZPY7apjBa21dmdtblNJp7YLChceOx4vT3r93O25m9SuJVJcEer951XN1hC9n7Vzm6kl5D2s67Wuk3NOjGNFySl1XLd7l5G5ilnJlu12gU7mC5xmvZnF4kvDPUy8q15a03GUnVxybaUmumemTpHOyVqO0t9HHPY8y1PWKcXLDy8lb2h7TXFT1ZJx8DLzk5PJ0x4/msZ8snUa7R9TTrqS2yln3cmeiK6TgvI8g0Wk+NM39vdYjh55fbvMcmLfFluDU7rGTJ6hdZO7U7rOTO16uWawxZ5MjakyGo8Iec1eZ2kebKuKq9xqBsEbciD4DAQHZTqLkE44OaMjppyysANEHYAimgCAqAVIQWQCTlkWusMYFTmAw6LOeJc8HOKB6P2d1VOKTfTHvNDRul/B5rpF50XRbvu+ZqdPvsNb5yuvM83JxvZxcm2vpYk1n5lm9bpUV7Sx3Rw+Wz35GWur9RpqSMQtTk58KjOSy1svoYwxbzz09Ovu1yntDCXe98+PgZHtNfT9GpylLdv8wMjq1GjGKlRqyqdzjJLy5bnVV7R5io1rF8GNsxaeO/kb1fwmtz2yFWm6scvd4Ktw4T0G47UWNKDVK19aS6pLHNGOuNQpTbbp8Oe7odJb+HLPDXy6NOuIbdPAual4kufToY+rcR5RfXuFV0+WfqLjtJyaWuoXOeuSszkkqS2y+45nL6lkTLI+czjuKhLUmcc3k3I5WkFihBUVkgIAClRNSZCielEIm4gAAqFChFZOinbdXyCIBmR03uMbAWPMJ8xIcwkA1ipAAEtvV4ZZ6dTRWNznrt4fXczKOmzuXHYlm2sbpt6D9JB5bWM+HwZZ6VpsYJYSyuq7yl0S6WOGaxmSzt0NVGllbcsHmz3Ons47L2kjd8HPdd32RZ22ox4MerKHc8ZWN8eXP4lBcWVSaxFNmc1Xs9dxWY8SXcmTH/AFvLLXw2Gp1rXGfQQb4m8tdOix1MHq9SnltpY6RWPcU9b+pW0nP5shjbTfNP3naY6+XHLl8utJIR4uSSCpbk1O3aFrLhW5duenFWIpMfVqZfvOetM1HK0yrMiBsDSFQoiQ6XIIYACgKiSkRktJ7gdf8ATMQTMvH4AB1UqKRHe1MLB0IrbipllEQ0GxCB9P7CMWl18hMgIhBcgwETHRGoMAWlrcYSbwt8bZcn34WTc6H2jhwJNPbbnv8AF83+551Qg3t7+RNb3Li/djy8kZyxmXtvDO4vaLLVKS3z/wCv5d4apq0Mb43+h5haaw8Lff5bLPw/kK+quUc8XevF74z+eBx+k9H1o3slQmtsZx3b9eZn9Tp04vCKKz1GUcvjxnK5+C29+Gc11eOT3lz2++TX06n1Zp1VK0fzyKe7r5fMhnXeSCq+fn+fY3MdOOWeyVKhC2AG3MCoRDkAIWohYoKq3AjFAAFQ6DGIfBgdGRSHjACxuamI+ZWs6L2eWcwCMAAB8BrJKUdm+5EbABRuRcgKhVIRIdwgT0qjeO7lyGV1h8xac8Dq8FjOd+qCmqDxt8RtRvCR36RPOxaypRlvjdGLlp0mG4zMKjWwtST+X4yzr2G+RkbPuRfKJ4VWxWNyGUju1ClwpeJXmpWLNAXAAEKKhByQDoRI5yy2TZ2exzoBQAAFFQ0cgJOIBm4AS1+bImKACAAAT0PZl5ohYAAiFYAA+PMmp/cAAZL2fePfsrz+wAFT6V7Re0Ob8wA5Zu/H6OmIgAzG6pO0HOPvKgQDtj6ebP8A6Khf3ACslY+iAAPueXwOVCgAogAAqFQAAoAAV//Z);
+    background-size:contain;
+    margin-top:0.5rem;
+    height:17rem;
+    width:17rem;
+    margin-left:21rem;
+    position:fixed;
+    background-position:center;
+    z-index: 1;
+    transition: opacity 0.2s ease-in-out;
+    border-radius:15px;
+}
+.main-heading{
+    position:relative;
+    top:6rem;
+    left:-20rem;
+    font-size: 4.5rem;
+    font-weight: 700;
+    width:50rem;
+}
+.glor{
+    background-color:#121212;
+    overflow: scroll;
+}
+.glorypic{
+    height: 300px;
+    width:980px;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius: 1rem;
+    display:block;
+}
+.glorypic .ima{
+    padding:20px;
+    border-radius: 10%;
+}
+.glorypic .write{
+    display:inline-block;
+    position: relative;
+    top: -10rem;
+}
+.text2nd{
+    display: inline-block;
+    font-size: 70px;
+}
+b{
+    position: relative;
+    top: -5rem;
+    left:-4rem;
+}
+.about{
+    display:inline-block;
+    position:relative;
+   
+}
+.about img{
+    height:25px;
+    width: 25px;
+    border-radius: 50%; 
+    position:relative;
+    left:-20rem;  
+    top:-2rem;
+}
+.artist{
+    display: inline-block;
+    position:relative;
+    left:-20rem;
+    width:200px;
+    padding-left:10px;
+    top: -2.5rem;
+    font-size: smaller;
+}
+.info{
+    display:inline-block;
+    position:absolute;
+    display:inline-block;
+    width:200px;
+    padding-left:10px;
+    opacity:0.65;
+}
+.play{
+    display:block;
+}
+.play i{
+    background-color: #1ed760;
+    height: 50px;
+    width:50px;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    margin:20px;
+    color:black;
+    font-size:20px;
+}
+.play i:hover{
+    height:52px;
+    width:52px;
+    font-size:22px;
+}
+.collective{
+    display:inline-block;
+    position:relative;
+}
+.plus{
+    position:absolute;
+    left: 110px;
+    top: 32px;
+}
+.plus i{
+    height:25px;
+    width:25px;
+    border:white solid;
+    opacity: 0.7;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:50%;
+}
+.plus i:hover{
+    opacity: 1;
+}
+.three-dots{
+    position:absolute;
+    left:190px;
+    top:38px;
+}
+.three-dots i{
+   display:flex;
+   opacity:0.7;
+}
+.three-dots i:hover{
+    opacity:1;
+}
+.hdng{
+    opacity:0.7;
+    font-size: 13px;
+}
+.titl{
+    display:inline-block;
+    padding-left:30px;
+    padding-right:49rem;
+}
+.art{
+    display:inline-block;
+    padding-left:10px;
+    padding-right:22rem;
+    
+}
+.time{
+    display:inline-block;
+    padding-left:3px;
+}
+.lining{
+    width: 100%;
+    border-top: 1px solid white;
+    opacity: 0.1;
+    margin-bottom:10px;
+}
+.song1st{
+    padding:1rem 0rem;
+    font-weight: 500;
+}
+.name{
+    display:inline-block; 
+    width:51rem;
+}
+.artst{
+    display:inline-block;
+    width:390px;
+    opacity:0.7;
+}
+.albums{
+    display:inline-block;
+    width:12rem;
+}
+.albumname{
+    display:inline-block;
+    width:12rem;
+}
+.Time{
+    display:inline-block;
+    opacity:0.7;
+}
+.count{
+    display:inline-block;
+    padding-left:15px;
+    width:20px;
+    opacity:0.7;
+}
+.song1st:hover{
+    background-color: #343434;
+    cursor: pointer;
+}
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <img src="logo3.png" class="logo">
+            <div class="nav-options" style="opacity: 1;">
+                <div class="icon-container"><a href="file:///C:/Users/Welcome/Desktop/hello/musicplayer.html"> <i class="fa-solid fa-house" id="houseicon"></i></a></div>
+            </div>   
+            <div class="nav-options">
+                <div class="searchoption">
+                <i class="fa-solid fa-magnifying-glass"></i> </div>
+                <form><input class="search" type="search" placeholder="Search songs" >
+                </form>
+            </div>
+            <div class="nav-options">
+                <div class="sign-in">
+                
+                <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Sign in</a>
+                </div>
+            </div>
+            <div class="nav-options">
+                <div class="login" style="opacity: 1;">
+                
+                <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Log in</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="sidebar">
+                <div class="library">
+                    <div class="options">
+                        <div class="library-option nav-options">
+                            <i class="fa-solid fa-book-open"></i>
+                            <a href="#">Your Library</a>
+                        </div>
+                        <div class="icons">
+                            <i class="fa-solid fa-plus"></i>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                        <div class="library-boxes">
+                            <div class="boxes">
+                                <p class="box1">Create your first playlist</p>
+                                <p class="box2">Let's create it together I will guide you</p>
+                                <button class="badge">Create playlist</button>
+                            </div>
+                        </div> 
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="big-background-image" id="bigbackgroundimage">
+                    <p class="main-heading">B Praak</p>
+                </div>
+                <div class="album">
+                    <div class="collective">
+                        <div class="play">
+                            <a href="#"><i class="fa-solid fa-play"></i></a>
+                        </div>
+                        <div class="plus">
+                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                        </div>
+                        <div class="three-dots">
+                            <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+                        </div>
+                    </div>
+                    <div class="hdng">
+                        <div class="titl"># Title</div>
+                        <div class="time">	&#128338;</div>
+                    </div>
+                    <div class="lining"></div>
+                    <div class="song1st"><a href="#">
+                        <div class="count">1</div>
+                        <div class="name">Saari Duniya Jalaa Denge</div>
+                        <div class="Time">3:02</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">2</div><a href="#">
+                        <div class="name">Mann Bharryya</div>
+                        <div class="Time">4:26</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">3</div><a href="#">
+                        <div class="name">Filhall</div>
+                        <div class="Time">4:15</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">4</div><a href="#">
+                        <div class="name">Pachtaoge</div>
+                        <div class="Time">3:46</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">5</div><a href="#">
+                        <div class="name">Koi Aaye Na Rabba</div>
+                        <div class="Time">4:02</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">6</div><a href="#">
+                        <div class="name">Filhaal2 Mohabbat</div>
+                        <div class="Time">5:02</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">7</div><a href="#">
+                        <div class="name">Mera Yaar</div>
+                        <div class="Time">4:17</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">8</div><a href="#">
+                        <div class="name">Achha Sila Diya</div>
+                        <div class="Time">5:17</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">9</div><a href="#">
+                        <div class="name">Dil Tod Ke</div>
+                        <div class="Time">3:59</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">10</div><a href="#">
+                        <div class="name">Kya Loge Tum</div>
+                        <div class="Time">3:53</div></a>
+                    </div>
+
+                    <div class="song1st"><a href="#">
+                        <div class="count">11</div>
+                        <div class="name">Yaarr Ni Milyaa</div>
+                        <div class="Time">5:10</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">12</div><a href="#">
+                        <div class="name">Baarish Ki Jaaye</div>
+                        <div class="Time">4:11</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">13</div><a href="#">
+                        <div class="name">Yaar Ka Sataya Hua Hai</div>
+                        <div class="Time">4:27</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">14</div><a href="#">
+                    <div class="name">Qismat Badal Di</div>
+                        <div class="Time">5:09</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">15</div><a href="#">
+                        <div class="name">Qismat 2</div>
+                        <div class="Time">5:00</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">16</div><a href="#">
+                        <div class="name">Kaun Hove Ga</div>
+                        <div class="Time">4:09</div></a>
+                    </div>
+                </div>
+                <script>
+                    // Get the image element
+                    const image = document.getElementById('bigbackgroundimage');
+                
+                    // Set the maximum scroll distance before the image disappears
+                    const maxScroll = 200; // The point where image will be completely faded
+                
+                    // Event listener for scroll event
+                    window.addEventListener('scroll', function() {
+                      // Get the current scroll position
+                      const scrollY = window.scrollY;
+                
+                      // Calculate the opacity based on scroll position
+                      let opacity = 1 - (scrollY / maxScroll);
+                      
+                      // Ensure opacity doesn't go below 0
+                      if (opacity < 0) opacity = 0;
+                
+                      // Set the opacity of the image
+                      image.style.opacity = opacity;
+                    });
+                  </script>
+    </body>
+</html>
