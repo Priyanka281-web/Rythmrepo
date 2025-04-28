@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="logo3.png">
+    <title>Rythmix Web Player: Music for everyone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+    body{
+    font-family: "Montserrat", sans-serif;
+    margin:0.5rem;
+    background-color:black;
+    color:white;
+    overflow:hidden;
+    }
+    .main{
+    display:flex;
+    height:100vh;
+    padding:0.5rem;
+    }
+    .sidebar{
+    background-color:black;
+    width:323px;
+    border-radius:1rem;
+    margin-right:0.5rem;
+    }
+    .main-content{
+    background-color:#121212;
+    background-image:linear-gradient(rgb(7, 211, 211) 10%,black,rgb(248, 140, 158) 40%, #121212, #121212);
+    flex: 1;
+    border-radius:15px;
+    overflow: scroll;
+    }
+    a{
+    text-decoration:none;
+    color:white;
+    }
+    .nav{
+    background-color:#121212;
+    border-radius:1rem;
+    display:flex;
+    justify-content: center;
+    top:0;
+    }
+    .nav-options .login{
+    -ms-flex-align: end;
+    }
+    .logo{
+    height:2.5rem;
+    width:2.5rem;
+    border-radius: 50%;
+    margin-top: 0.25rem;
+    margin-right:25rem;
+    }
+    .nav-options i{
+    font-size:1.25rem;
+    }
+    .nav-options a{
+    font-size:1rem;
+    }
+    .nav-options{
+    opacity: 0.7;
+    }
+    .nav-options:hover{
+    opacity: 1;
+    }
+    .library{
+    background-color:#121212;
+    color:black;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius:1rem;
+    height:100%;
+    width:300px;
+    padding:0.5rem 0.75rem;
+    }
+    .library a{
+    color:black;
+    }
+    .library p{
+    color:white;
+    }
+    .library i{
+    cursor: pointer;
+    }
+    .icon-container{
+    background-color: #3a3a3a;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:3rem;
+    height:3rem;
+    margin-right:0.5rem;
+    
+    }
+    .searchoption{ 
+    position:relative; 
+    margin-top:-0.4rem;
+    top:1.35rem; 
+    left:1.6rem; 
+    z-index: 2; 
+    }
+    .search{
+    border-radius:2rem;
+    padding-top:0.85rem;
+    padding-bottom:0.85rem;
+    padding-left:3rem;
+    padding-right:4rem; 
+    margin-left:0.25rem;
+    margin-top:-0.7rem;
+    margin-right:3rem;
+    width:400px;
+    background-color: #3a3a3a;
+    }
+    input[type="search"]{
+    color:white;
+    }
+    input::placeholder{
+    color:#f0efef;
+    font-family: inherit;
+    }
+    .sign-in{
+    display:flex;
+    align-items:center;
+    margin-top:1rem;
+    margin-left:10rem;
+    }
+    .login{
+    display:flex;
+    align-items: center;
+    opacity: 1;
+    margin-left:2.5rem;
+    background-color:white;
+    border-radius: 3rem;
+    width:5.25rem; 
+    padding:0.5rem 0.25rem 1rem 0.35rem;
+    }
+    .login a{
+    color:black;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:0.5rem;
+    }
+    .options{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    }
+    .library-option i{
+    font-size:1.25rem;
+    }
+    .icons{
+    font-size:1.25rem;
+    display:flex;
+    }
+    .icons i{
+    opacity: 0.7;
+    margin-right: 1rem;
+    }
+    .icons i:hover{
+    opacity: 1;
+    }
+    .boxes{
+    background-color: #232323;
+    height:8rem;
+    border-radius:0.75rem;
+    margin:0.75rem 0 1.75rem 0;
+    padding:0.75rem 1rem;
+    }
+    .box1{
+    font-size:1rem;
+    font-weight: 500;
+    }
+    .box2{
+    font-size:0.85rem;
+    opacity:0.9;
+    }
+    .badge{
+    background-color:white;
+    border:none;
+    border-radius:100px;
+    padding:0.2rem 1rem;
+    font-weight: 700;
+    margin-top:0.5rem;
+    height:2rem;
+    width:fit-content;
+    }
+    .dropdown{
+    position:relative;
+    display:inline-block;
+    font-family:Arial,sans-serif;
+    }
+    .dropbtn{
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    padding:1-px;
+    text-decoration:none;
+    }
+    .dropdown-content{
+    display:none;
+    background-color:#333;
+    min-width:200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    }
+    .dropdown-content a{
+    color:white;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+    }
+    .dropdown-content a:hover{
+    background-color: #575757;
+    }
+.dropdown:hover .dropdown-content{display: block;}
+.dropdown:hover .dropbtn{border-bottom: 2px solid white;}
+.album{
+    z-index:2;
+    align-items: center;
+    padding-right:1rem;
+    padding-top:0.75rem;
+    margin-top:18rem;
+    position:relative;
+    background-color: #121212;
+    border-radius: 15px;
+    margin-bottom:6rem;
+}
+.heading{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:1rem;
+    margin-bottom:-1rem;
+}
+.heading  a:hover{
+    text-decoration:underline;
+}
+.heading h2{
+    padding-left:1.5rem;
+}
+.card-title{
+    font-weight:500;
+    display:flex;
+}
+.cards{
+    display:flex;
+    flex-wrap: wrap;
+}
+.card{
+    height:18rem;
+    width:10rem;
+    background-image: linear-gradient(rgb(3, 226, 226),rgb(0, 0, 0),rgb(253, 151, 168));
+    border-radius:0.5rem;
+    padding:1rem;
+    margin:1rem;
+    transition: box-shadow 0.5s ease;
+}
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgb(71, 71, 71);
+}
+.card img{
+    height:9rem;
+    width:9rem;
+    border-radius:0.5rem;
+    margin-left:0.5rem;
+}
+.card-info{
+    opacity:0.9;
+    font-size:0.9rem;
+}
+.big-background-image{
+    background-image: url(data:image/jpeg;base64,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);
+    background-size:contain;
+    margin-top:0.5rem;
+    height:17rem;
+    width:17rem;
+    margin-left:21rem;
+    position:fixed;
+    background-position:center;
+    z-index: 1;
+    transition: opacity 0.2s ease-in-out;
+    border-radius:15px;
+}
+.main-heading{
+    position:relative;
+    top:6rem;
+    left:-20rem;
+    font-size: 4.5rem;
+    font-weight: 700;
+    width:50rem;
+}
+.glor{
+    background-color:#121212;
+    overflow: scroll;
+}
+.glorypic{
+    height: 300px;
+    width:980px;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius: 1rem;
+    display:block;
+}
+.glorypic .ima{
+    padding:20px;
+    border-radius: 10%;
+}
+.glorypic .write{
+    display:inline-block;
+    position: relative;
+    top: -10rem;
+}
+.text2nd{
+    display: inline-block;
+    font-size: 70px;
+}
+b{
+    position: relative;
+    top: -5rem;
+    left:-4rem;
+}
+.about{
+    display:inline-block;
+    position:relative;
+   
+}
+.about img{
+    height:25px;
+    width: 25px;
+    border-radius: 50%; 
+    position:relative;
+    left:-20rem;  
+    top:-2rem;
+}
+.artist{
+    display: inline-block;
+    position:relative;
+    left:-20rem;
+    width:200px;
+    padding-left:10px;
+    top: -2.5rem;
+    font-size: smaller;
+}
+.info{
+    display:inline-block;
+    position:absolute;
+    display:inline-block;
+    width:200px;
+    padding-left:10px;
+    opacity:0.65;
+}
+.play{
+    display:block;
+}
+.play i{
+    background-color: #1ed760;
+    height: 50px;
+    width:50px;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    margin:20px;
+    color:black;
+    font-size:20px;
+}
+.play i:hover{
+    height:52px;
+    width:52px;
+    font-size:22px;
+}
+.collective{
+    display:inline-block;
+    position:relative;
+}
+.plus{
+    position:absolute;
+    left: 110px;
+    top: 32px;
+}
+.plus i{
+    height:25px;
+    width:25px;
+    border:white solid;
+    opacity: 0.7;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:50%;
+}
+.plus i:hover{
+    opacity: 1;
+}
+.three-dots{
+    position:absolute;
+    left:190px;
+    top:38px;
+}
+.three-dots i{
+   display:flex;
+   opacity:0.7;
+}
+.three-dots i:hover{
+    opacity:1;
+}
+.hdng{
+    opacity:0.7;
+    font-size: 13px;
+}
+.titl{
+    display:inline-block;
+    padding-left:30px;
+    padding-right:49rem;
+}
+.art{
+    display:inline-block;
+    padding-left:10px;
+    padding-right:22rem;
+    
+}
+.time{
+    display:inline-block;
+    padding-left:3px;
+}
+.lining{
+    width: 100%;
+    border-top: 1px solid white;
+    opacity: 0.1;
+    margin-bottom:10px;
+}
+.song1st{
+    padding:1rem 0rem;
+    font-weight: 500;
+}
+.name{
+    display:inline-block; 
+    width:51rem;
+}
+.artst{
+    display:inline-block;
+    width:390px;
+    opacity:0.7;
+}
+.albums{
+    display:inline-block;
+    width:12rem;
+}
+.albumname{
+    display:inline-block;
+    width:12rem;
+}
+.Time{
+    display:inline-block;
+    opacity:0.7;
+}
+.count{
+    display:inline-block;
+    padding-left:15px;
+    width:20px;
+    opacity:0.7;
+}
+.song1st:hover{
+    background-color: #343434;
+    cursor: pointer;
+}
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <img src="logo3.png" class="logo">
+            <div class="nav-options" style="opacity: 1;">
+                <div class="icon-container"><a href="file:///C:/Users/Welcome/Desktop/hello/musicplayer.html"> <i class="fa-solid fa-house" id="houseicon"></i></a></div>
+            </div>   
+            <div class="nav-options">
+                <div class="searchoption">
+                <i class="fa-solid fa-magnifying-glass"></i> </div>
+                <form><input class="search" type="search" placeholder="Search songs" >
+                </form>
+            </div>
+            <div class="nav-options">
+                <div class="sign-in">
+                
+                <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Sign in</a>
+                </div>
+            </div>
+            <div class="nav-options">
+                <div class="login" style="opacity: 1;">
+                
+                <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Log in</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="sidebar">
+                <div class="library">
+                    <div class="options">
+                        <div class="library-option nav-options">
+                            <i class="fa-solid fa-book-open"></i>
+                            <a href="#">Your Library</a>
+                        </div>
+                        <div class="icons">
+                            <i class="fa-solid fa-plus"></i>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                        <div class="library-boxes">
+                            <div class="boxes">
+                                <p class="box1">Create your first playlist</p>
+                                <p class="box2">Let's create it together I will guide you</p>
+                                <button class="badge">Create playlist</button>
+                            </div>
+                        </div> 
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="big-background-image" id="bigbackgroundimage">
+                    <p class="main-heading">Arijit Singh</p>
+                </div>
+                <div class="album">
+                    <div class="collective">
+                        <div class="play">
+                            <a href="#"><i class="fa-solid fa-play"></i></a>
+                        </div>
+                        <div class="plus">
+                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                        </div>
+                        <div class="three-dots">
+                            <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+                        </div>
+                    </div>
+                    <div class="hdng">
+                        <div class="titl"># Title</div>
+                        <div class="time">	&#128338;</div>
+                    </div>
+                    <div class="lining"></div>
+                    <div class="song1st"><a href="#">
+                        <div class="count">1</div>
+                        <div class="name">Apna Bana Le</div>
+                        <div class="Time">4:21</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">2</div><a href="#">
+                        <div class="name">Tujhe Kitna Chahne Lage Hum</div>
+                        <div class="Time">4:44</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">3</div><a href="#">
+                        <div class="name">Tum Hi Ho</div>
+                        <div class="Time">4:21</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">4</div><a href="#">
+                        <div class="name">Sahiba</div>
+                        <div class="Time">3:37</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">5</div><a href="#">
+                        <div class="name">Kesariya</div>
+                        <div class="Time">4:28</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">6</div><a href="#">
+                        <div class="name">Satranga</div>
+                        <div class="Time">4:31</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">7</div><a href="#">
+                        <div class="name">Ve Kamleya</div>
+                        <div class="Time">4:06</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">8</div><a href="#">
+                        <div class="name">O Maahi</div>
+                        <div class="Time">3:53</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">9</div><a href="#">
+                        <div class="name">Zihaal e Miskin</div>
+                        <div class="Time">4:03</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">10</div><a href="#">
+                        <div class="name">Agar Tum Sath Ho</div>
+                        <div class="Time">5:41</div></a>
+                    </div>
+
+                    <div class="song1st"><a href="#">
+                        <div class="count">11</div>
+                        <div class="name">Shayad</div>
+                        <div class="Time">4:07</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">12</div><a href="#">
+                        <div class="name">Hamari Adhuri Kahani</div>
+                        <div class="Time">4:38</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">13</div><a href="#">
+                        <div class="name">Hamdard</div>
+                        <div class="Time">4:20</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">14</div><a href="#">
+                        <div class="name">O Beliya</div>
+                        <div class="Time">2:58</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">15</div><a href="#">
+                        <div class="name">Sajni</div>
+                        <div class="Time">2:50</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">16</div><a href="#">
+                        <div class="name">Tenu Khabar Nahi</div>
+                        <div class="Time">3:08</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">17</div><a href="#">
+                        <div class="name">Heeyire</div>
+                        <div class="Time">3:14</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">18</div><a href="#">
+                        <div class="name">Mast Magan</div>
+                        <div class="Time">4:40</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">19</div><a href="#">
+                        <div class="name">Aaj Bhi 2</div>
+                        <div class="Time">4:19</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">20</div><a href="#">
+                        <div class="name">Khamoshiyan</div>
+                        <div class="Time">2:30</div></a>
+                    </div>
+                    <div class="song1st"><a href="#">
+                        <div class="count">21</div>
+                        <div class="name">Zaalima</div>
+                        <div class="Time">4:59</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">22</div><a href="#">
+                        <div class="name">Channa Mereya</div>
+                        <div class="Time">4:49</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">23</div><a href="#">
+                        <div class="name">Soch Na Sake</div>
+                        <div class="Time">4:41</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">24</div><a href="#">
+                        <div class="name">Deva Deva</div>
+                        <div class="Time">4:39</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">25</div><a href="#">
+                        <div class="name">Ae Dil Hai Mushkil</div>
+                        <div class="Time">4:29</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">26</div><a href="#">
+                        <div class="name">Phir Kabhi</div>
+                        <div class="Time">4:47</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">27</div><a href="#">
+                        <div class="name">Tera Fitoor</div>
+                        <div class="Time">5:10</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">28</div><a href="#">
+                        <div class="name">Ve Maahi</div>
+                        <div class="Time">3:43</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">29</div><a href="#">
+                        <div class="name">Ghungroo</div>
+                        <div class="Time">5:02</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">30</div><a href="#">
+                        <div class="name">Khairiyat</div>
+                        <div class="Time">4:30</div></a>
+                    </div>
+
+                    <div class="song1st"><a href="#">
+                        <div class="count">31</div>
+                        <div class="name">Phir Mohabbat</div>
+                        <div class="Time">5:29</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">32</div><a href="#">
+                        <div class="name">Raabta</div>
+                        <div class="Time">4:03</div></a>
+                    </div>
+                </div>
+                <script>
+                    // Get the image element
+                    const image = document.getElementById('bigbackgroundimage');
+                
+                    // Set the maximum scroll distance before the image disappears
+                    const maxScroll = 200; // The point where image will be completely faded
+                
+                    // Event listener for scroll event
+                    window.addEventListener('scroll', function() {
+                      // Get the current scroll position
+                      const scrollY = window.scrollY;
+                
+                      // Calculate the opacity based on scroll position
+                      let opacity = 1 - (scrollY / maxScroll);
+                      
+                      // Ensure opacity doesn't go below 0
+                      if (opacity < 0) opacity = 0;
+                
+                      // Set the opacity of the image
+                      image.style.opacity = opacity;
+                    });
+                  </script>
+    </body>
+</html>
