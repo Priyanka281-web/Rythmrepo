@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="logo3.png">
+    <title>Rythmix Web Player: Music for everyone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+    body{
+    font-family: "Montserrat", sans-serif;
+    margin:0.5rem;
+    background-color:black;
+    color:white;
+    overflow:hidden;
+    }
+    .main{
+    display:flex;
+    height:100vh;
+    padding:0.5rem;
+    }
+    .sidebar{
+    background-color:black;
+    width:323px;
+    border-radius:1rem;
+    margin-right:0.5rem;
+    }
+    .main-content{
+    background-color:#121212;
+    background-image:linear-gradient(black);
+    flex: 1;
+    border-radius:15px;
+    overflow: scroll;
+    
+    
+    }
+    a{
+    text-decoration:none;
+    color:white;
+    }
+    .nav{
+    background-color:#121212;
+    border-radius:1rem;
+    display:flex;
+    justify-content: center;
+    top:0;
+    }
+    .nav-options .login{
+    -ms-flex-align: end;
+    }
+    .logo{
+    height:2.5rem;
+    width:2.5rem;
+    border-radius: 50%;
+    margin-top: 0.25rem;
+    margin-right:25rem;
+    }
+    .nav-options i{
+    font-size:1.25rem;
+    }
+    .nav-options a{
+    font-size:1rem;
+    }
+    .nav-options{
+    opacity: 0.7;
+    }
+    .nav-options:hover{
+    opacity: 1;
+    }
+    .library{
+    background-color:#121212;
+    color:black;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius:1rem;
+    height:100%;
+    width:300px;
+    padding:0.5rem 0.75rem;
+    }
+    .library a{
+    color:black;
+    }
+    .library p{
+    color:white;
+    }
+    .library i{
+    cursor: pointer;
+    }
+    .icon-container{
+    background-color: #3a3a3a;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:3rem;
+    height:3rem;
+    margin-right:0.5rem;
+    
+    }
+    .searchoption{ 
+    position:relative; 
+    margin-top:-0.4rem;
+    top:1.35rem; 
+    left:1.6rem; 
+    z-index: 2; 
+    }
+    .search{
+    border-radius:2rem;
+    padding-top:0.85rem;
+    padding-bottom:0.85rem;
+    padding-left:3rem;
+    padding-right:4rem; 
+    margin-left:0.25rem;
+    margin-top:-0.7rem;
+    margin-right:3rem;
+    width:400px;
+    background-color: #3a3a3a;
+    }
+    input[type="search"]{
+    color:white;
+    }
+    input::placeholder{
+    color:#f0efef;
+    font-family: inherit;
+    }
+    .sign-in{
+    display:flex;
+    align-items:center;
+    margin-top:1rem;
+    margin-left:10rem;
+    }
+    .login{
+    display:flex;
+    align-items: center;
+    opacity: 1;
+    margin-left:2.5rem;
+    background-color:white;
+    border-radius: 3rem;
+    width:5.25rem; 
+    padding:0.5rem 0.25rem 1rem 0.35rem;
+    }
+    .login a{
+    color:black;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:0.5rem;
+    }
+    .options{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    }
+    .library-option i{
+    font-size:1.25rem;
+    }
+    .icons{
+    font-size:1.25rem;
+    display:flex;
+    }
+    .icons i{
+    opacity: 0.7;
+    margin-right: 1rem;
+    }
+    .icons i:hover{
+    opacity: 1;
+    }
+    .boxes{
+    background-color: #232323;
+    height:8rem;
+    border-radius:0.75rem;
+    margin:0.75rem 0 1.75rem 0;
+    padding:0.75rem 1rem;
+    }
+    .box1{
+    font-size:1rem;
+    font-weight: 500;
+    }
+    .box2{
+    font-size:0.85rem;
+    opacity:0.9;
+    }
+    .badge{
+    background-color:white;
+    border:none;
+    border-radius:100px;
+    padding:0.2rem 1rem;
+    font-weight: 700;
+    margin-top:0.5rem;
+    height:2rem;
+    width:fit-content;
+    }
+    .dropdown{
+    position:relative;
+    display:inline-block;
+    font-family:Arial,sans-serif;
+    }
+    .dropbtn{
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    padding:1-px;
+    text-decoration:none;
+    }
+    .dropdown-content{
+    display:none;
+    background-color:#333;
+    min-width:200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    }
+    .dropdown-content a{
+    color:white;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+    }
+    .dropdown-content a:hover{
+    background-color: #575757;
+    }
+.dropdown:hover .dropdown-content{display: block;}
+.dropdown:hover .dropbtn{border-bottom: 2px solid white;}
+.album{
+    z-index:2;
+    align-items: center;
+    padding-right:1rem;
+    padding-top:0.75rem;
+    margin-top:1rem;
+    position:relative;
+    background-color: #121212;
+    border-radius: 15px;
+    margin-bottom:6rem;
+}
+.heading{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:1rem;
+    margin-bottom:0.5rem;
+}
+.heading  a:hover{
+    text-decoration:underline;
+}
+.heading h2{
+    padding-left:1.5rem;
+}
+.card-title{
+    font-weight:500;
+    display:flex;
+}
+.cards{
+    display:flex;
+    flex-wrap: wrap;
+}
+.card{
+    height:18rem;
+    width:10rem;
+    background-image: linear-gradient(rgb(3, 226, 226),rgb(0, 0, 0),rgb(253, 151, 168));
+    border-radius:0.5rem;
+    padding:1rem;
+    margin:1rem;
+    transition: box-shadow 0.5s ease;
+}
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px #4d4d4d;
+}
+.card img{
+    height:9rem;
+    width:9rem;
+    border-radius:0.5rem;
+    margin-left:0.5rem;
+}
+.card-info{
+    opacity:0.9;
+    font-size:0.9rem;
+}
+.big-background-image{
+    background-image:linear-gradient(pink,#252525,#181818);
+    height:12rem;
+    width:150.6vh;
+    position:fixed;
+    background-position:center;
+    z-index: 1;
+    transition: opacity 0.2s ease-in-out;
+    border-radius:15px;
+}
+.main-heading{
+    position:relative;
+  
+    left:2rem;
+    font-size: 5.5rem;
+    font-weight: 700;
+}
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <img src="logo3.png" class="logo">
+            <div class="nav-options" style="opacity: 1;">
+                <div class="icon-container"><a href="file:///C:/Users/Welcome/Desktop/hello/musicplayer.html"> <i class="fa-solid fa-house" id="houseicon"></i></a></div>
+            </div>   
+            <div class="nav-options">
+                <div class="searchoption">
+                <i class="fa-solid fa-magnifying-glass"></i> </div>
+                <form><input class="search" type="search" placeholder="Search songs" >
+                </form>
+            </div>
+            <div class="nav-options">
+                <div class="sign-in">
+                
+                <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Sign in</a>
+                </div>
+            </div>
+            <div class="nav-options">
+                <div class="login" style="opacity: 1;">
+                
+                <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Log in</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="sidebar">
+                <div class="library">
+                    <div class="options">
+                        <div class="library-option nav-options">
+                            <i class="fa-solid fa-book-open"></i>
+                            <a href="#">Your Library</a>
+                        </div>
+                        <div class="icons">
+                            <i class="fa-solid fa-plus"></i>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                        <div class="library-boxes">
+                            <div class="boxes">
+                                <p class="box1">Create your first playlist</p>
+                                <p class="box2">Let's create it together I will guide you</p>
+                                <button class="badge">Create playlist</button>
+                            </div>
+                        </div> 
+                </div>
+            </div>
+            <div class="main-content">
+
+                <div class="album">
+                    <div class="heading">
+                    <h2><a href="#">New & Trending</a></h2>
+                    <a style="opacity:0;">Show more</a></div>
+                    <div class="cards">
+                        <a href="file:///C:/Users/Welcome/Desktop/hello/New_music_hindi.html"><div class="card">
+                            <img src="newhindi.jpg">
+                            <p class="card-title">New Music Hindi</p>
+                            <p class="card-info">Love is in the air with Jaana Samjho Na from Bhool Bhulaiyaa 3.</p>
+                        </div></a>
+                        
+        
+        
+                        <a href="file:///C:/Users/Welcome/Desktop/hello/new_in_dance.html"><div class="card">
+                            <img src="newindanceing.jpg">
+                            <p class="card-title">New in Dance</p>
+                            <p class="card-info">Beats just go hardcore with these latest dance tracks.Cover-Yo Yo Honey Singh</p>
+                        </div></a>
+        
+        
+                        <a href="file:///C:/Users/Welcome/Desktop/hello/New_music_hindi_friday_i-pop.html"><div class="card">
+                            <img src="data:image/jpeg;base64,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">
+                            <p class="card-title">New Music Friday I-Pop</p>
+                            <p class="card-info">Latest music from your fav I-Pop artists. Cover- Badshah</p>
+                        </div></a>
+
+
+
+
+                    <a href="file:///C:/Users/Welcome/Desktop/hello/Latest_love_tunes.html"><div class="card">
+                        <img src="lovetunes.jpg">
+                        <p class="card-title">Latest Love Tunes</p>
+                        <p class="card-info">Step into a magical world love with these mushy songs.Cover-Darshan Raval</p>
+                    </div></a>
+                    
+    
+
+
+                        
+                </div>
+                <script>
+                    // Get the image element
+                    const image = document.getElementById('bigbackgroundimage');
+                
+                    // Set the maximum scroll distance before the image disappears
+                    const maxScroll = 200; // The point where image will be completely faded
+                
+                    // Event listener for scroll event
+                    window.addEventListener('scroll', function() {
+                      // Get the current scroll position
+                      const scrollY = window.scrollY;
+                
+                      // Calculate the opacity based on scroll position
+                      let opacity = 1 - (scrollY / maxScroll);
+                      
+                      // Ensure opacity doesn't go below 0
+                      if (opacity < 0) opacity = 0;
+                
+                      // Set the opacity of the image
+                      image.style.opacity = opacity;
+                    });
+                  </script>
+    </body>
+</html>
