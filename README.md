@@ -12,12 +12,6 @@ FEATURES -
 
 * Music Discovery features.
 
-* Social features.
-
-* Technical features.
-
-* Advanced features.
-
 * Admin features.
 
 TECH STACK -
