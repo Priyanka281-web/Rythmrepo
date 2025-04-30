@@ -1,0 +1,222 @@
+body{
+    font-family: "Montserrat", sans-serif;
+    margin:0.5rem;
+    background-color:black;
+    color:white;
+    overflow:hidden;
+}
+.main{
+    display:flex;
+    height:100vh;
+    padding:0.5rem;
+}
+.sidebar{
+    background-color:black;
+    width:323px;
+    border-radius:1rem;
+    margin-right:0.5rem;
+}
+.main-content{
+    background-color:#121212;
+    background-image:linear-gradient(Cyan,black,pink);
+    flex: 1;
+    border-radius:1rem;
+    overflow: scroll;
+    padding:0 1.5rem 0 1.5rem;
+    
+}
+.music-player{
+    background-color:black;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:72px;
+}
+a{
+    text-decoration:none;
+    color:white;
+}
+.nav{
+    background-color:#121212;
+    border-radius:1rem;
+    display:flex;
+    justify-content: center;
+    top:0;
+}
+.nav-options .login{
+    -ms-flex-align: end;
+}
+.logo{
+    height:2.5rem;
+    width:2.5rem;
+    border-radius: 50%;
+    margin-top: 0.25rem;
+    margin-right:25rem;
+}
+.nav-options i{
+    font-size:1.25rem;
+}
+.nav-options a{
+    font-size:1rem;
+}
+.nav-options{
+    opacity: 0.7;
+}
+.nav-options:hover{
+    opacity: 1;
+}
+.library{
+    background-color:#121212;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius:1rem;
+    height:100%;
+    width:300px;
+    padding:0.5rem 0.75rem;
+}
+.library a{
+    color:black;
+}
+.library p{
+    color:white;
+}
+.library i{
+    cursor: pointer;
+}
+.icon-container{
+    background-color: #3a3a3a;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:3rem;
+    height:3rem;
+    margin-right:0.5rem;
+    
+}
+.searchoption{
+    position:absolute;
+    top:1.35rem;
+    left:34.5rem;
+    z-index: 2;
+}
+.search{
+    border-radius:2rem;
+    padding-top:0.85rem;
+    padding-bottom:0.85rem;
+    padding-left:3rem;
+    padding-right:4rem; 
+    margin-left:0.25rem;
+    margin-right:3rem;
+    width:400px;
+    background-color: #3a3a3a;
+}
+input[type="search"]{
+    color:white;
+}
+input::placeholder{
+    color:#f0efef;
+    font-family: inherit;
+}
+.sign-in{
+    display:flex;
+    align-items:center;
+    margin-top:1rem;
+    margin-left:10rem;
+}
+.login{
+    display:flex;
+    align-items: center;
+    opacity: 1;
+    margin-left:2.5rem;
+    background-color:white;
+    border-radius: 3rem;
+    width:5.25rem; 
+    padding:0.5rem 0.25rem 1rem 0.35rem;
+}
+.login a{
+    color:black;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:0.5rem;
+}
+.options{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.library-option i{
+    font-size:1.25rem;
+}
+.icons{
+    font-size:1.25rem;
+    display:flex;
+}
+.icons i{
+    opacity: 0.7;
+    margin-right: 1rem;
+}
+.icons i:hover{
+    opacity: 1;
+}
+.boxes{
+    background-color: #232323;
+    height:8rem;
+    border-radius:0.75rem;
+    margin:0.75rem 0 1.75rem 0;
+    padding:0.75rem 1rem;
+}
+.box1{
+    font-size:1rem;
+    font-weight: 500;
+}
+.box2{
+    font-size:0.85rem;
+    opacity:0.9;
+}
+.badge{
+    background-color:white;
+    border:none;
+    border-radius:100px;
+    padding:0.2rem 1rem;
+    font-weight: 700;
+    margin-top:0.5rem;
+    height:2rem;
+    width:fit-content;
+}
+.featured{
+   
+    align-items: center;
+    padding-right:1rem;
+    padding-top:0.75rem;
+ }
+ .topic{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:1rem;
+    padding-top:4.5rem;
+ }
+ 
+ .charts{
+    display:flex;
+    flex-wrap: wrap;
+ }
+ .chart{
+    height:13rem;
+    width:9.75rem;
+    background-image: linear-gradient(rgb(3, 226, 226), rgb(0, 0, 0), rgb(253, 151, 168));
+    border-radius:0.5rem;
+    padding:1rem;
+    margin:1rem;
+    margin-bottom:7rem;
+    transition: box-shadow 0.5s ease;
+ }
+ .chart img{
+    height:9rem;
+    width:9rem;
+    border-radius:0.5rem;
+ }
+ .chart:hover{
+    transform: scale(1.1);
+    box-shadow: 10px 10px 15px #131313;
+}
