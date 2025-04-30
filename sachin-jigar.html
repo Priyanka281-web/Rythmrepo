@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="logo3.png">
+    <title>Rythmix Web Player: Music for everyone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+    body{
+    font-family: "Montserrat", sans-serif;
+    margin:0.5rem;
+    background-color:black;
+    color:white;
+    overflow:hidden;
+    }
+    .main{
+    display:flex;
+    height:100vh;
+    padding:0.5rem;
+    }
+    .sidebar{
+    background-color:black;
+    width:323px;
+    border-radius:1rem;
+    margin-right:0.5rem;
+    }
+    .main-content{
+    background-color:#121212;
+    background-image:linear-gradient(rgb(7, 211, 211) 10%,black,rgb(248, 140, 158) 40%, #121212, #121212);
+    flex: 1;
+    border-radius:15px;
+    overflow: scroll;
+    }
+    a{
+    text-decoration:none;
+    color:white;
+    }
+    .nav{
+    background-color:#121212;
+    border-radius:1rem;
+    display:flex;
+    justify-content: center;
+    top:0;
+    }
+    .nav-options .login{
+    -ms-flex-align: end;
+    }
+    .logo{
+    height:2.5rem;
+    width:2.5rem;
+    border-radius: 50%;
+    margin-top: 0.25rem;
+    margin-right:25rem;
+    }
+    .nav-options i{
+    font-size:1.25rem;
+    }
+    .nav-options a{
+    font-size:1rem;
+    }
+    .nav-options{
+    opacity: 0.7;
+    }
+    .nav-options:hover{
+    opacity: 1;
+    }
+    .library{
+    background-color:#121212;
+    color:black;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius:1rem;
+    height:100%;
+    width:300px;
+    padding:0.5rem 0.75rem;
+    }
+    .library a{
+    color:black;
+    }
+    .library p{
+    color:white;
+    }
+    .library i{
+    cursor: pointer;
+    }
+    .icon-container{
+    background-color: #3a3a3a;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:3rem;
+    height:3rem;
+    margin-right:0.5rem;
+    
+    }
+    .searchoption{ 
+    position:relative; 
+    margin-top:-0.4rem;
+    top:1.35rem; 
+    left:1.6rem; 
+    z-index: 2; 
+    }
+    .search{
+    border-radius:2rem;
+    padding-top:0.85rem;
+    padding-bottom:0.85rem;
+    padding-left:3rem;
+    padding-right:4rem; 
+    margin-left:0.25rem;
+    margin-top:-0.7rem;
+    margin-right:3rem;
+    width:400px;
+    background-color: #3a3a3a;
+    }
+    input[type="search"]{
+    color:white;
+    }
+    input::placeholder{
+    color:#f0efef;
+    font-family: inherit;
+    }
+    .sign-in{
+    display:flex;
+    align-items:center;
+    margin-top:1rem;
+    margin-left:10rem;
+    }
+    .login{
+    display:flex;
+    align-items: center;
+    opacity: 1;
+    margin-left:2.5rem;
+    background-color:white;
+    border-radius: 3rem;
+    width:5.25rem; 
+    padding:0.5rem 0.25rem 1rem 0.35rem;
+    }
+    .login a{
+    color:black;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:0.5rem;
+    }
+    .options{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    }
+    .library-option i{
+    font-size:1.25rem;
+    }
+    .icons{
+    font-size:1.25rem;
+    display:flex;
+    }
+    .icons i{
+    opacity: 0.7;
+    margin-right: 1rem;
+    }
+    .icons i:hover{
+    opacity: 1;
+    }
+    .boxes{
+    background-color: #232323;
+    height:8rem;
+    border-radius:0.75rem;
+    margin:0.75rem 0 1.75rem 0;
+    padding:0.75rem 1rem;
+    }
+    .box1{
+    font-size:1rem;
+    font-weight: 500;
+    }
+    .box2{
+    font-size:0.85rem;
+    opacity:0.9;
+    }
+    .badge{
+    background-color:white;
+    border:none;
+    border-radius:100px;
+    padding:0.2rem 1rem;
+    font-weight: 700;
+    margin-top:0.5rem;
+    height:2rem;
+    width:fit-content;
+    }
+    .dropdown{
+    position:relative;
+    display:inline-block;
+    font-family:Arial,sans-serif;
+    }
+    .dropbtn{
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    padding:1-px;
+    text-decoration:none;
+    }
+    .dropdown-content{
+    display:none;
+    background-color:#333;
+    min-width:200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    }
+    .dropdown-content a{
+    color:white;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+    }
+    .dropdown-content a:hover{
+    background-color: #575757;
+    }
+.dropdown:hover .dropdown-content{display: block;}
+.dropdown:hover .dropbtn{border-bottom: 2px solid white;}
+.album{
+    z-index:2;
+    align-items: center;
+    padding-right:1rem;
+    padding-top:0.75rem;
+    margin-top:18rem;
+    position:relative;
+    background-color: #121212;
+    border-radius: 15px;
+    margin-bottom:6rem;
+}
+.heading{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:1rem;
+    margin-bottom:-1rem;
+}
+.heading  a:hover{
+    text-decoration:underline;
+}
+.heading h2{
+    padding-left:1.5rem;
+}
+.card-title{
+    font-weight:500;
+    display:flex;
+}
+.cards{
+    display:flex;
+    flex-wrap: wrap;
+}
+.card{
+    height:18rem;
+    width:10rem;
+    background-image: linear-gradient(rgb(3, 226, 226),rgb(0, 0, 0),rgb(253, 151, 168));
+    border-radius:0.5rem;
+    padding:1rem;
+    margin:1rem;
+    transition: box-shadow 0.5s ease;
+}
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgb(71, 71, 71);
+}
+.card img{
+    height:9rem;
+    width:9rem;
+    border-radius:0.5rem;
+    margin-left:0.5rem;
+}
+.card-info{
+    opacity:0.9;
+    font-size:0.9rem;
+}
+.big-background-image{
+    background-image: url(data:image/jpeg;base64,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);
+    background-size:contain;
+    margin-top:0.5rem;
+    height:17rem;
+    width:17rem;
+    margin-left:21rem;
+    position:fixed;
+    background-position:center;
+    z-index: 1;
+    transition: opacity 0.2s ease-in-out;
+    border-radius:15px;
+}
+.main-heading{
+    position:relative;
+    top:6rem;
+    left:-20rem;
+    font-size: 4.5rem;
+    font-weight: 700;
+    width:50rem;
+}
+.glor{
+    background-color:#121212;
+    overflow: scroll;
+}
+.glorypic{
+    height: 300px;
+    width:980px;
+    background-image:linear-gradient(Cyan,black,pink);
+    border-radius: 1rem;
+    display:block;
+}
+.glorypic .ima{
+    padding:20px;
+    border-radius: 10%;
+}
+.glorypic .write{
+    display:inline-block;
+    position: relative;
+    top: -10rem;
+}
+.text2nd{
+    display: inline-block;
+    font-size: 70px;
+}
+b{
+    position: relative;
+    top: -5rem;
+    left:-4rem;
+}
+.about{
+    display:inline-block;
+    position:relative;
+   
+}
+.about img{
+    height:25px;
+    width: 25px;
+    border-radius: 50%; 
+    position:relative;
+    left:-20rem;  
+    top:-2rem;
+}
+.artist{
+    display: inline-block;
+    position:relative;
+    left:-20rem;
+    width:200px;
+    padding-left:10px;
+    top: -2.5rem;
+    font-size: smaller;
+}
+.info{
+    display:inline-block;
+    position:absolute;
+    display:inline-block;
+    width:200px;
+    padding-left:10px;
+    opacity:0.65;
+}
+.play{
+    display:block;
+}
+.play i{
+    background-color: #1ed760;
+    height: 50px;
+    width:50px;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    margin:20px;
+    color:black;
+    font-size:20px;
+}
+.play i:hover{
+    height:52px;
+    width:52px;
+    font-size:22px;
+}
+.collective{
+    display:inline-block;
+    position:relative;
+}
+.plus{
+    position:absolute;
+    left: 110px;
+    top: 32px;
+}
+.plus i{
+    height:25px;
+    width:25px;
+    border:white solid;
+    opacity: 0.7;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:50%;
+}
+.plus i:hover{
+    opacity: 1;
+}
+.three-dots{
+    position:absolute;
+    left:190px;
+    top:38px;
+}
+.three-dots i{
+   display:flex;
+   opacity:0.7;
+}
+.three-dots i:hover{
+    opacity:1;
+}
+.hdng{
+    opacity:0.7;
+    font-size: 13px;
+}
+.titl{
+    display:inline-block;
+    padding-left:30px;
+    padding-right:49rem;
+}
+.art{
+    display:inline-block;
+    padding-left:10px;
+    padding-right:22rem;
+    
+}
+.time{
+    display:inline-block;
+    padding-left:3px;
+}
+.lining{
+    width: 100%;
+    border-top: 1px solid white;
+    opacity: 0.1;
+    margin-bottom:10px;
+}
+.song1st{
+    padding:1rem 0rem;
+    font-weight: 500;
+}
+.name{
+    display:inline-block; 
+    width:51rem;
+}
+.artst{
+    display:inline-block;
+    width:390px;
+    opacity:0.7;
+}
+.albums{
+    display:inline-block;
+    width:12rem;
+}
+.albumname{
+    display:inline-block;
+    width:12rem;
+}
+.Time{
+    display:inline-block;
+    opacity:0.7;
+}
+.count{
+    display:inline-block;
+    padding-left:15px;
+    width:20px;
+    opacity:0.7;
+}
+.song1st:hover{
+    background-color: #343434;
+    cursor: pointer;
+}
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <img src="logo3.png" class="logo">
+            <div class="nav-options" style="opacity: 1;">
+                <div class="icon-container"><a href="file:///C:/Users/Welcome/Desktop/hello/musicplayer.html"> <i class="fa-solid fa-house" id="houseicon"></i></a></div>
+            </div>   
+            <div class="nav-options">
+                <div class="searchoption">
+                <i class="fa-solid fa-magnifying-glass"></i> </div>
+                <form><input class="search" type="search" placeholder="Search songs" >
+                </form>
+            </div>
+            <div class="nav-options">
+                <div class="sign-in">
+                
+                <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Sign in</a>
+                </div>
+            </div>
+            <div class="nav-options">
+                <div class="login" style="opacity: 1;">
+                
+                <a target="_self" href="file:///C:/Users/Welcome/Desktop/hello/login%20in.html?">Log in</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="sidebar">
+                <div class="library">
+                    <div class="options">
+                        <div class="library-option nav-options">
+                            <i class="fa-solid fa-book-open"></i>
+                            <a href="#">Your Library</a>
+                        </div>
+                        <div class="icons">
+                            <i class="fa-solid fa-plus"></i>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                        <div class="library-boxes">
+                            <div class="boxes">
+                                <p class="box1">Create your first playlist</p>
+                                <p class="box2">Let's create it together I will guide you</p>
+                                <button class="badge">Create playlist</button>
+                            </div>
+                        </div> 
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="big-background-image" id="bigbackgroundimage">
+                    <p class="main-heading">Sachin-Jigar</p>
+                </div>
+                <div class="album">
+                    <div class="collective">
+                        <div class="play">
+                            <a href="#"><i class="fa-solid fa-play"></i></a>
+                        </div>
+                        <div class="plus">
+                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                        </div>
+                        <div class="three-dots">
+                            <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+                        </div>
+                    </div>
+                    <div class="hdng">
+                        <div class="titl"># Title</div>
+                        <div class="time">	&#128338;</div>
+                    </div>
+                    <div class="lining"></div>
+                    <div class="song1st"><a href="#">
+                        <div class="count">1</div>
+                        <div class="name">Aayi ai</div>
+                        <div class="Time">2:58</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">2</div><a href="#">
+                        <div class="name">Mushkil Hai</div>
+                        <div class="Time">4:03</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">3</div><a href="#">
+                        <div class="name">Apna Bna Le</div>
+                        <div class="Time">4:21</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">4</div><a href="#">
+                        <div class="name">Khoobsurat</div>
+                        <div class="Time">4:04</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">5</div><a href="#">
+                        <div class="name">Tumhare Hi Rahenge Hum</div>
+                        <div class="Time">3:50</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">6</div><a href="#">
+                        <div class="name">Tum Se</div>
+                        <div class="Time">4:51</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">7</div><a href="#">
+                        <div class="name">Tainu Khabar Nahi</div>
+                        <div class="Time">3:08</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">8</div><a href="#">
+                        <div class="name">Jeena Jeena</div>
+                        <div class="Time">3:48</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">9</div><a href="#">
+                        <div class="name">Mere Mehboob</div>
+                        <div class="Time">3:36</div></a>
+                    </div>
+                    <div class="song1st">
+                        <div class="count">10</div><a href="#">
+                        <div class="name">Saibo</div>
+                        <div class="Time">3:15</div></a>
+                    </div>
+                </div>
+                <script>
+                    // Get the image element
+                    const image = document.getElementById('bigbackgroundimage');
+                
+                    // Set the maximum scroll distance before the image disappears
+                    const maxScroll = 200; // The point where image will be completely faded
+                
+                    // Event listener for scroll event
+                    window.addEventListener('scroll', function() {
+                      // Get the current scroll position
+                      const scrollY = window.scrollY;
+                
+                      // Calculate the opacity based on scroll position
+                      let opacity = 1 - (scrollY / maxScroll);
+                      
+                      // Ensure opacity doesn't go below 0
+                      if (opacity < 0) opacity = 0;
+                
+                      // Set the opacity of the image
+                      image.style.opacity = opacity;
+                    });
+                  </script>
+    </body>
+</html>
