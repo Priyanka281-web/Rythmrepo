@@ -12,8 +12,6 @@ FEATURES -
 
 * Music Discovery features.
 
-* Admin features.
-
 TECH STACK -
 * HTML - structure and layout of the pages.
 
